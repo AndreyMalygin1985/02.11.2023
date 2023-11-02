@@ -26,4 +26,21 @@ public:
 	};
 
 	Human() : Human(0, nullptr, nullptr, nullptr, Date()) {}
+
+	Human(const Human& obj) : id{ obj.id },
+		surname{ obj.surname ? new char[strlen(obj.surname) + 1] : nullptr },
+		first_name{ obj.first_name ? new char[strlen(obj.first_name) + 1] : nullptr },
+		last_name{ obj.last_name ? new char[strlen(obj.last_name) + 1] : nullptr },
+		birthday{ obj.birthday } 
+	{
+		if (surname && first_name && last_name)
+		{
+			strcpy_s(this->surname, strlen(obj.surname) + 1, obj.surname);
+			strcpy_s(this->first_name, strlen(obj.first_name) + 1, obj.first_name);
+			strcpy_s(this->last_name, strlen(obj.last_name) + 1, obj.last_name);
+		}
+	}
+	
+	
+
 };
