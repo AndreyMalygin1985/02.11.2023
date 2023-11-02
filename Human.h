@@ -25,5 +25,5 @@ public:
 		}
 	};
 
-	Human() :
+	Human() : Human(0, nullptr, nullptr, nullptr, Date()) {}
 };

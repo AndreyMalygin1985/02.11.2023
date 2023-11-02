@@ -9,7 +9,12 @@ int main()
 {
 	SetConsoleOutputCP(1251);
 
-	Date birthday((unsigned short)17, (unsigned short)05, (unsigned short)1985);
+	Date birthday((unsigned short)17, 05, 1985);
 	Human x(1, "Малыгин", "Андрей", "Валерьевич", birthday);
+	Human y();
 
+	cout << "Ok"<<endl;
+
+
+	return 0;
 }

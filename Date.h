@@ -16,5 +16,8 @@ public:
 			this->month = month;
 			this->year = year;
 		}
+	}
+
+	Date() : Date(0, 0, 0) {};
 
 };
