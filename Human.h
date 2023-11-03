@@ -55,7 +55,45 @@ public:
 	{
 		return count_instance;
 	}
+	int getId() {
+		return id;
+	}
+	char const* getSurName() {
+		return surname;
+	}
+	char const* getFirstName() {
+		return first_name;
+	}
+	char const* getLastName() {
+		return last_name;
+	}
+	Date* getLDate() {
+		return &birthday;
+	}
+
+	Human& setId(int id) {
+		this->id = id;
+		return *this;
+	}
+	Human& setSurName(char const* surname) {
+		strcpy_s(this->surname, strlen(surname) + 1, surname);
+		return *this;
+	}
+	Human& setFirstName(char const* first_name) {
+		strcpy_s(this->first_name, strlen(first_name) + 1, first_name);
+		return *this;
+	}
+	Human& setLastName(char const* last_name) {
+		strcpy_s(this->last_name, strlen(last_name) + 1, last_name);
+		return *this;
+	}
+	Human& setDate(unsigned short day, unsigned short month, unsigned short year) {
+		birthday.setDay(day).setMonth(month).setYear(year);
+		return *this;
+	}
+
+	void showInfo();
+
 
 };
 
-unsigned int Human::count_instance = 0;
