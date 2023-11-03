@@ -36,6 +36,6 @@ public:
 	}
 	void show()
 	{
-		cout << day<<"." <<month<<"."<<year << endl;
+		cout << day << "." << month << "." << year << endl;
 	}
 };

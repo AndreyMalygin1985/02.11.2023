@@ -4,7 +4,9 @@
 #include"Date.h"
 
 using namespace std;
+
 unsigned int Human::count_instance = 0;
+
 int main()
 {
 	SetConsoleOutputCP(1251);
