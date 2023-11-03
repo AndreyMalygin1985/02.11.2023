@@ -4,15 +4,17 @@
 
 class Human {
 	static unsigned int count_instance;
-	int id;
+	unsigned int id;
 	char* surname;
 	char* first_name;
 	char* last_name;
 	Date birthday;
 
+	char* createName(char const* name);
+
 public:
-	Human(int id, const char* surname, const char* first_name, const char* last_name, Date birthday) :
-		id{ id },
+	Human(const char* surname, const char* first_name, const char* last_name, Date birthday) :
+		id{ count_instance },
 		surname{ surname ? new char[strlen(surname) + 1] : nullptr },
 		first_name{ first_name ? new char[strlen(first_name) + 1] : nullptr },
 		last_name{ last_name ? new char[strlen(last_name) + 1] : nullptr },
@@ -27,9 +29,9 @@ public:
 		count_instance++;
 	};
 
-	Human() : Human(0, nullptr, nullptr, nullptr, Date()) {}
+	Human() : Human(nullptr, nullptr, nullptr, Date()) {}
 
-	Human(const Human& obj) : id{ obj.id },						//конструктор копирования
+	Human(const Human& obj) : id{ count_instance },						//конструктор копирования
 		surname{ obj.surname ? new char[strlen(obj.surname) + 1] : nullptr },
 		first_name{ obj.first_name ? new char[strlen(obj.first_name) + 1] : nullptr },
 		last_name{ obj.last_name ? new char[strlen(obj.last_name) + 1] : nullptr },
@@ -48,7 +50,6 @@ public:
 		delete[] surname;
 		delete[] first_name;
 		delete[] last_name;
-		count_instance--;
 	}
 
 	static unsigned int getCountIntance()
@@ -76,15 +77,18 @@ public:
 		return *this;
 	}
 	Human& setSurName(char const* surname) {
-		strcpy_s(this->surname, strlen(surname) + 1, surname);
+		delete[] this->surname;
+		this->surname = createName(surname);
 		return *this;
 	}
 	Human& setFirstName(char const* first_name) {
-		strcpy_s(this->first_name, strlen(first_name) + 1, first_name);
+		delete[] this->first_name;
+		this->first_name = createName(first_name);	
 		return *this;
 	}
 	Human& setLastName(char const* last_name) {
-		strcpy_s(this->last_name, strlen(last_name) + 1, last_name);
+		delete[] this->last_name;
+		this->last_name = createName(last_name);
 		return *this;
 	}
 	Human& setDate(unsigned short day, unsigned short month, unsigned short year) {
@@ -93,6 +97,8 @@ public:
 	}
 
 	void showInfo();
+
+
 
 
 };
