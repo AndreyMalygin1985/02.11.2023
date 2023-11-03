@@ -11,9 +11,10 @@ int main()
 
 	Date birthday(17, 05, 1985);
 	Human x(1, "Малыгин", "Андрей", "Валерьевич", birthday);
+	Human xk(1, "Малыгин", "Андрей", "Валерьевич", birthday);
 	Human y{x};
 
-	cout << "Ok"<<endl;
+	cout <<"Человеков: " << Human::getCountIntance() << endl;
 
 
 	return 0;
